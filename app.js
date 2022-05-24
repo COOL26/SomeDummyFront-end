@@ -12,8 +12,8 @@ let variable = 0;
 
 nxtbtn.addEventListener("click", () => {
   counter++;
-  if(variable < 2) {
-      variable++;
+  if (variable < 2) {
+    variable++;
   }
   if (counter > circles.length) {
     counter = circles.length;
@@ -23,8 +23,8 @@ nxtbtn.addEventListener("click", () => {
 
 prevbtn.addEventListener("click", () => {
   counter--;
-  if(variable >= 1) {
-      variable--;
+  if (variable >= 1) {
+    variable--;
   }
   if (counter < 1) {
     counter = 1;
@@ -33,31 +33,30 @@ prevbtn.addEventListener("click", () => {
 });
 
 function highlightCircle() {
-    circles.forEach((circle,index) => {
-        if(index < counter) {
-            circle.classList.add("active");
-        }else {
-            circle.classList.remove("active");
-        }
-    });
-    dogImages.forEach((image,idx) => {
-        if(idx < counter) {
-            image.classList.add("active");
-        }else {
-            image.classList.remove("active");
-            image.classList.add("inactive");
-        }
-    })
-    progressLine.style.width = 50*variable + "%";
-    console.log(progressLine.style.width);
+  circles.forEach((circle, index) => {
+    if (index < counter) {
+      circle.classList.add("active");
+    } else {
+      circle.classList.remove("active");
+    }
+  });
+  dogImages.forEach((image, idx) => {
+    dogImages[counter - 1].classList.add("active");
+    if (idx < counter - 1) {
+      image.className = "";
+    } else if(idx > counter - 1){
+      dogImages[idx].className = "";
+    }
+  });
+  progressLine.style.width = 50 * variable + "%";
 }
 
-openbtn.addEventListener("click", ()=> {
-    square.style.transform = "rotate(-90deg)";
-    navUnorderedList.style.left = 0;
-})
+openbtn.addEventListener("click", () => {
+  square.style.transform = "rotate(-90deg)";
+  navUnorderedList.style.left = 0;
+});
 
 closebtn.addEventListener("click", () => {
-    square.style.transform = "rotate(0deg)";
-    navUnorderedList.style.left = -50 + "%";
-})
+  square.style.transform = "rotate(0deg)";
+  navUnorderedList.style.left = -50 + "%";
+});
